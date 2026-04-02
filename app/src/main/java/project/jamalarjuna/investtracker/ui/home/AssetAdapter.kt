@@ -1,4 +1,4 @@
-package project.jamalarjuna.investtracker.ui
+package project.jamalarjuna.investtracker.ui.home
 
 import android.view.LayoutInflater
 import android.view.*
@@ -38,12 +38,12 @@ class AssetAdapter : RecyclerView.Adapter<AssetAdapter.AssetViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AssetAdapter.AssetViewHolder {
+    ): AssetViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_asset, parent, false)
         return AssetViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: AssetAdapter.AssetViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AssetViewHolder, position: Int) {
         val asset = data[position]
         // data formatter IDR
         val invested = asset.buyingPrice * asset.quantity

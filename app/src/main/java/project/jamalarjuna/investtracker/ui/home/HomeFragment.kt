@@ -1,4 +1,4 @@
-package project.jamalarjuna.investtracker.ui
+package project.jamalarjuna.investtracker.ui.home
 
 import android.graphics.Color
 import android.os.Bundle

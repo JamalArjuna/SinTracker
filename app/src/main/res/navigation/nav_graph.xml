@@ -4,7 +4,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="project.jamalarjuna.investtracker.ui.HomeFragment"
+        android:name="project.jamalarjuna.investtracker.ui.home.HomeFragment"
         android:label="Home" />
 
 </navigation>
