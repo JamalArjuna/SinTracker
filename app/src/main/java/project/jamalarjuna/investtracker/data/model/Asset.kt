@@ -5,10 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity (tableName = "asset")
 data class Asset(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-
-    val name: String,
+    @PrimaryKey
+    val name: String, // kode emiten
+    val stockname: String, // nama emiten
     val currentPrice: Double, // harga sekarang suatu emiten
     val quantity: Double, // total quantity/Lot yang dimiliki
     val buyingPrice: Double // harga beli suatu emiten

@@ -18,6 +18,8 @@ import project.jamalarjuna.investtracker.data.model.Asset
 import project.jamalarjuna.investtracker.data.repository.AssetRepository
 import project.jamalarjuna.investtracker.viewmodel.AssetViewModel
 import project.jamalarjuna.investtracker.viewmodel.AssetViewModelFactory
+import java.text.NumberFormat
+import java.util.Locale
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -53,13 +55,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val db = AppDatabase.getDatabase(requireContext())
             val dao = db.assetDao()
 
-            dao.insert(
-                Asset(
-                    id = 0,
-                    name = "BBCA",
-                    quantity = 10.0,
+            // TEST INSERT
+            viewModel.addAsset(
+                asset = Asset(
+                    stockname = "PT. Bank Central Asia TBK.",
+                    name = "AADI",
+                    quantity = 2.0,
                     buyingPrice = 10000.0,
-                    currentPrice = 12000.0
+                    currentPrice = 2500.0
                 )
             )
         }
@@ -77,9 +80,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 // SUMMARY
                 launch {
                     viewModel.portoSummary.collect { summary ->
-                        tvInvest.text = "Invest: ${summary.totalInvestment}"
-                        tvValue.text = "Value: ${summary.totalAsset}"
-                        tvProfit.text = "P/L: ${summary.totalProfitLoss}"
+                        val formatter = NumberFormat.getNumberInstance(Locale("in", "ID")).apply {
+                            minimumFractionDigits = 0
+                            maximumFractionDigits = 2
+                        }
+
+                        tvInvest.text = "Invest: ${formatter.format(summary.totalInvestment)}"
+                        tvValue.text = "Value: ${formatter.format(summary.totalAsset)}"
+                        tvProfit.text = "P/L: ${formatter.format(summary.totalProfitLoss)}"
 
                         // warna
                         if (summary.totalProfitLoss >= 0) {

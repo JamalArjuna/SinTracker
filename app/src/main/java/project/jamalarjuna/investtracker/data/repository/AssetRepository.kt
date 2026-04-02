@@ -6,7 +6,7 @@ import project.jamalarjuna.investtracker.data.model.AssetDAO
 class AssetRepository(private val dao: AssetDAO) {
     fun getAllAssets() = dao.getAllAsset()
 
-    suspend fun insert(asset: Asset){
+    suspend fun insert(asset: Asset) {
         dao.insert(asset)
     }
 }
