@@ -9,7 +9,7 @@ data class Asset(
     val id: Int = 0,
 
     val name: String,
-    val avgPrice: Double,
-    val quantity: Double,
-    val buyingPrice: Double
+    val currentPrice: Double, // harga sekarang suatu emiten
+    val quantity: Double, // total quantity/Lot yang dimiliki
+    val buyingPrice: Double // harga beli suatu emiten
 )
